@@ -14,6 +14,6 @@ output "port" {
 }
 
 output "host" {
-  value       = "${coalesce(module.dns.hostname, join("", aws_elasticache_replication_group.default.*.primary_endpoint_address))}"
+  value       = "${join("", aws_elasticache_replication_group.default.*.primary_endpoint_address))}"
   description = "Redis host"
 }
