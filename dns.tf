@@ -1,4 +1,4 @@
-resource "aws_route53_record" "main_elasticache" {
+/*resource "aws_route53_record" "main_elasticache" {
   count   = "${var.route53_required ? 1 : 0}"
   zone_id = "${var.global_phz_id}"
   name    = "${var.elasticache_route53}"
@@ -6,7 +6,16 @@ resource "aws_route53_record" "main_elasticache" {
 
   alias {
     name                   = "${aws_elasticache_replication_group.default.primary_endpoint_address}"
-    zone_id                = "${var.global_phz_id}"
-    evaluate_target_health = true
+    zone_id                = "${aws_elasticache_replication_group.default.hosted_zone_id}"
+   evaluate_target_health = true
   }
+}*/
+
+resource "aws_route53_record" "default" {
+  count   = "${var.route53_required ? 1 : 0}"
+  name    = "${var.elasticache_route53}"
+  zone_id = "${var.global_phz_id}"
+  type    = "CNAME"
+  ttl     = 300
+  records = "${aws_elasticache_replication_group.default.primary_endpoint_address}"
 }
