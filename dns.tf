@@ -5,7 +5,7 @@ resource "aws_route53_record" "main_elasticache" {
   type    = "A"
 
   alias {
-    name                   = "${aws_elasticache_replication_group.default.primary_endpoint_address}}"
+    name                   = "${aws_elasticache_replication_group.default.primary_endpoint_address}"
     zone_id                = "${var.global_phz_id}"
     evaluate_target_health = true
   }
