@@ -17,5 +17,5 @@ resource "aws_route53_record" "default" {
   zone_id = "${var.global_phz_id}"
   type    = "CNAME"
   ttl     = 300
-  records = "${aws_elasticache_replication_group.default.primary_endpoint_address}"
+  records = ["${aws_elasticache_replication_group.default.primary_endpoint_address}"]
 }
