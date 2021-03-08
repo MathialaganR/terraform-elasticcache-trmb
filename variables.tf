@@ -175,3 +175,7 @@ variable "snapshot_retention_limit" {
   description = "The number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them."
   default     = "0"
 }
+
+variable "global_phz_id" {}
+variable "elasticache_route53" {}
+variable "route53_required" {}
